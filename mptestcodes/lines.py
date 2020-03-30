@@ -9,6 +9,14 @@ def click_event(event, x, y, flags, param):
         if len(points) >= 2:
             cv2.line(img, points[-1], points[-2], (255, 0, 0), 5)
         cv2.imshow('image', img)
+    if event == cv2.EVENT_RBUTTONDOWN:
+        blue = img[y, x, 0]
+        green = img[y, x, 1]
+        red = img[y, x, 2]
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        strBGR = str(blue) + ', '+ str(green)+ ', '+ str(red)
+        cv2.putText(img, strBGR, (x, y), font, .5, (0, 255, 255), 2)
+        cv2.imshow('image', img)
 
 
 img = cv2.imread('image.jpeg')
